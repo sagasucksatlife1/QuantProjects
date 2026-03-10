@@ -29,6 +29,15 @@ Collection of quantitative finance and algorithmic trading projects demonstratin
 - ROC-AUC analysis and regulatory compliance focus
 - **Tech:** Python, Scikit-learn, Pandas
 
+### 5. Monte Carlo Options Simulator (Derivatives Pricing)
+- Stochastic simulation of asset price paths using Geometric Brownian Motion
+- Pricing of Vanilla, Asian, and Barrier options via Monte Carlo simulation
+- Euler and Milstein discretization schemes for SDEs
+- Variance reduction using Antithetic Variates
+- Convergence analysis with confidence intervals and Law of Large Numbers
+- Parallelized simulations for performance optimization
+**Tech:** Python, NumPy, Multiprocessing, Matplotlib
+
 ## Contact
 Kartikeya Singh 
 [LinkedIn](www.linkedin.com/in/kartikeyasingh10066)
