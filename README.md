@@ -36,7 +36,7 @@ Collection of quantitative finance and algorithmic trading projects demonstratin
 - Variance reduction using Antithetic Variates
 - Convergence analysis with confidence intervals and Law of Large Numbers
 - Parallelized simulations for performance optimization
-**Tech:** Python, NumPy, Multiprocessing, Matplotlib
+- **Tech:** Python, NumPy, Multiprocessing, Matplotlib
 
 ### 6. Volatility Forecasting & Risk Modeling (ARCH–GARCH)
 
@@ -45,7 +45,7 @@ Collection of quantitative finance and algorithmic trading projects demonstratin
 - Forecasted conditional volatility and applied it to Value at Risk (VaR) estimation
 - Compared models using log-likelihood, AIC, and BIC metrics
 - Built the pipeline using Python, NumPy, Pandas, Statsmodels, and ARCH library
-**Tech:** Python, NumPy, Pandas, Statsmodels, ARCH, SciPy
+- **Tech:** Python, NumPy, Pandas, Statsmodels, ARCH, SciPy
 
 ## Contact
 Kartikeya Singh 
