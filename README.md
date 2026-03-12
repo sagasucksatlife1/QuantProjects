@@ -38,6 +38,15 @@ Collection of quantitative finance and algorithmic trading projects demonstratin
 - Parallelized simulations for performance optimization
 **Tech:** Python, NumPy, Multiprocessing, Matplotlib
 
+### 6. Volatility Forecasting & Risk Modeling (ARCH–GARCH)
+
+- Implemented ARCH, GARCH, and EGARCH models to capture volatility clustering in financial returns
+- Performed stationarity tests (ADF), ACF analysis, and Engle’s ARCH test for heteroskedasticity detection
+- Forecasted conditional volatility and applied it to Value at Risk (VaR) estimation
+- Compared models using log-likelihood, AIC, and BIC metrics
+- Built the pipeline using Python, NumPy, Pandas, Statsmodels, and ARCH library
+**Tech:** Python, NumPy, Pandas, Statsmodels, ARCH, SciPy
+
 ## Contact
 Kartikeya Singh 
 [LinkedIn](www.linkedin.com/in/kartikeyasingh10066)
