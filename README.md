@@ -46,7 +46,15 @@ Collection of quantitative finance and algorithmic trading projects demonstratin
 - Compared models using log-likelihood, AIC, and BIC metrics
 - Built the pipeline using Python, NumPy, Pandas, Statsmodels, and ARCH library
 - **Tech:** Python, NumPy, Pandas, Statsmodels, ARCH, SciPy
+  
+### 7. Differential Gene Expression Analysis (Cancer Genomics)
+- Identified significantly upregulated and downregulated genes between tumor and normal samples using log fold change and statistical testing
+- Applied t-tests, p-value filtering, and thresholding to detect biologically significant DEGs
+- Visualized results using volcano plots for clear interpretation of gene significance and expression levels
+- Handled real-world data challenges, including missing normal samples and dataset inconsistencies
+- **Tech:** Python, Pandas, NumPy, SciPy, Matplotlib
 
+  
 ## Contact
 Kartikeya Singh 
 [LinkedIn](www.linkedin.com/in/kartikeyasingh10066)
