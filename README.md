@@ -54,6 +54,12 @@ Collection of quantitative finance and algorithmic trading projects demonstratin
 - Handled real-world data challenges, including missing normal samples and dataset inconsistencies
 - **Tech:** Python, Pandas, NumPy, SciPy, Matplotlib
 
+### 8. Risk Parity & Portfolio Optimization (Quantitative Finance)
+- Constructed and compared Equal Weight, Markowitz (Max Sharpe), and Risk Parity portfolios using real market data
+- Implemented risk decomposition using covariance matrices, marginal risk contribution (MRC), and equal risk contribution principles
+- Optimized portfolios using constrained numerical optimization (SLSQP) and analyzed return, volatility, and Sharpe ratios
+- Applied leverage to scale the risk parity portfolio to target volatility, improving returns while maintaining diversification
+- **Tech:** Python, NumPy, Pandas, SciPy, yfinance, Matplotlib
   
 ## Contact
 Kartikeya Singh 
