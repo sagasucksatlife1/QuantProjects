@@ -60,6 +60,16 @@ Collection of quantitative finance and algorithmic trading projects demonstratin
 - Optimized portfolios using constrained numerical optimization (SLSQP) and analyzed return, volatility, and Sharpe ratios
 - Applied leverage to scale the risk parity portfolio to target volatility, improving returns while maintaining diversification
 - **Tech:** Python, NumPy, Pandas, SciPy, yfinance, Matplotlib
+
+### 10. Credit Risk Modeling (PD, LGD, EAD & Basel Framework)
+
+- Built ML-based models (Logistic Regression, XGBoost) to estimate Probability of Default (PD) with calibrated outputs
+- Estimated Loss Given Default (LGD) and Exposure at Default (EAD) using borrower and loan features
+- Computed Expected Loss (EL = PD × LGD × EAD) and derived Risk Weighted Assets (RWA) and capital requirements (Basel III – 10.5%)
+- Performed portfolio optimization by removing high-risk loans, significantly improving capital-to-loss stability
+- Evaluated models using ROC-AUC, F1-score, and precision-recall trade-offs
+- **Tech:** Python, Pandas, NumPy, Scikit-learn, XGBoost, SciPy
+
   
 ## Contact
 Kartikeya Singh 
