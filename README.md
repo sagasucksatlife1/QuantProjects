@@ -1,81 +1,158 @@
-# QuantProjects
-# Quantitative Finance Projects
+# GD Nexus — A Terminal for Quantitative Research
 
-Collection of quantitative finance and algorithmic trading projects demonstrating expertise in derivatives pricing, statistical arbitrage, portfolio optimization, and machine learning.
+A local-first research system that fuses three instruments into one pipeline: a **council of language-model personas** that propose trading strategies, a **backtesting forge** that hand-tests them against the historical record, and a **portfolio treasury** that composes surviving strategies into an allocated, optimized book.
 
-## Projects
+> Built end-to-end — data layer, sandboxed execution engine, LLM orchestration, portfolio math, and interface — as a single coherent research tool rather than three disconnected scripts.
 
-### 1. Black-Scholes Option Pricing Model
-- European options pricing with Greeks calculation (Delta, Gamma, Vega, Theta, Rho)
-- Implied volatility solver using Newton-Raphson method
-- Market data integration and model validation
-- **Tech:** Python, NumPy, SciPy, yfinance
+---
 
-### 2. Portfolio Optimization (Markowitz Theory)
-- Mean-variance optimization maximizing Sharpe ratio
-- Efficient frontier analysis
-- Achieved 58.6% return with 1.32 Sharpe ratio
-- **Tech:** Python, SciPy, Pandas
+## Why this exists
 
-### 3. Pairs Trading (Statistical Arbitrage)
-- Cointegration-based mean-reversion strategy
-- ADF testing, OLS regression, z-score signals
-- 14.5% return, 0.67 Sharpe, 4.1% max drawdown
-- **Tech:** Python, Statsmodels, Matplotlib
+Most "AI trading bot" projects are a single prompt asking an LLM to output buy/sell signals. That's not research — it's a guess with extra steps.
 
-### 4. Credit Scoring Model
-- ML classification using Logistic Regression, Random Forest, XGBoost
-- 85% accuracy with hyperparameter tuning
-- ROC-AUC analysis and regulatory compliance focus
-- **Tech:** Python, Scikit-learn, Pandas
+GD Nexus is built on a different premise: **strategy generation should be adversarial and disposable.** Ten independent model personas — each with a distinct mathematical worldview (statistical mechanics, differential geometry, signal processing, behavioral finance, regime-switching macro) — each *independently* propose a strategy. Almost all of them fail. That's expected, and the failures are not hidden: every idea, every formula, every stack trace is logged and shown, because the failure log is as informative as the survivors.
 
-### 5. Monte Carlo Options Simulator (Derivatives Pricing)
-- Stochastic simulation of asset price paths using Geometric Brownian Motion
-- Pricing of Vanilla, Asian, and Barrier options via Monte Carlo simulation
-- Euler and Milstein discretization schemes for SDEs
-- Variance reduction using Antithetic Variates
-- Convergence analysis with confidence intervals and Law of Large Numbers
-- Parallelized simulations for performance optimization
-- **Tech:** Python, NumPy, Multiprocessing, Matplotlib
+What survives contact with real price data, transaction costs, and a lookahead-bias checker gets promoted into a vault, backtested properly, and can be deployed against an actual multi-asset portfolio.
 
-### 6. Volatility Forecasting & Risk Modeling (ARCH–GARCH)
+---
 
-- Implemented ARCH, GARCH, and EGARCH models to capture volatility clustering in financial returns
-- Performed stationarity tests (ADF), ACF analysis, and Engle’s ARCH test for heteroskedasticity detection
-- Forecasted conditional volatility and applied it to Value at Risk (VaR) estimation
-- Compared models using log-likelihood, AIC, and BIC metrics
-- Built the pipeline using Python, NumPy, Pandas, Statsmodels, and ARCH library
-- **Tech:** Python, NumPy, Pandas, Statsmodels, ARCH, SciPy
-  
-### 7. Differential Gene Expression Analysis (Cancer Genomics)
-- Identified significantly upregulated and downregulated genes between tumor and normal samples using log fold change and statistical testing
-- Applied t-tests, p-value filtering, and thresholding to detect biologically significant DEGs
-- Visualized results using volcano plots for clear interpretation of gene significance and expression levels
-- Handled real-world data challenges, including missing normal samples and dataset inconsistencies
-- **Tech:** Python, Pandas, NumPy, SciPy, Matplotlib
+## Architecture
 
-### 8. Risk Parity & Portfolio Optimization (Quantitative Finance)(Modified version of the 2nd project)
-- Constructed and compared Equal Weight, Markowitz (Max Sharpe), and Risk Parity portfolios using real market data
-- Implemented risk decomposition using covariance matrices, marginal risk contribution (MRC), and equal risk contribution principles
-- Optimized portfolios using constrained numerical optimization (SLSQP) and analyzed return, volatility, and Sharpe ratios
-- Applied leverage to scale the risk parity portfolio to target volatility, improving returns while maintaining diversification
-- **Tech:** Python, NumPy, Pandas, SciPy, yfinance, Matplotlib
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                          I. THE COUNCIL                          │
+│   10 LLM research personas × 2 runs each = 20 attempts/session   │
+│   Local inference (Ollama / Qwen3-8B) — nothing leaves the machine│
+│                                                                    │
+│   persona → IDEA → FORMULA → CODE → validate → backtest          │
+│                                          │                        │
+│                              ┌───────────┴──────────┐             │
+│                          survivors               graveyard        │
+│                       (promoted to vault)     (logged, not hidden)│
+└─────────────────────────────────┬─────────────────────────────────┘
+                                   │
+┌──────────────────────────────────▼────────────────────────────────┐
+│                           II. THE FORGE                            │
+│   Sandboxed strategy execution + vectorized backtesting engine     │
+│   yfinance data · lookahead detection · costs · leverage · SL/TP   │
+│   → equity curve, drawdown, trade log, full metric suite           │
+└──────────────────────────────────┬────────────────────────────────┘
+                                   │
+┌──────────────────────────────────▼────────────────────────────────┐
+│                          III. THE TREASURY                         │
+│   Portfolio analytics · Mean-Variance & Hierarchical Risk Parity   │
+│   THE FUSION: run a vaulted strategy on the portfolio's own        │
+│   combined equity curve — trade the estate, not just one asset     │
+└─────────────────────────────────────────────────────────────────────┘
+```
 
-### 10. Credit Risk Modeling (PD, LGD, EAD & Basel Framework)
+**Stack:** FastAPI · SQLite · yfinance · SciPy/NumPy/Pandas · Ollama (Qwen3-8B) · React
 
-- Built ML-based models (Logistic Regression, XGBoost) to estimate Probability of Default (PD) with calibrated outputs
-- Estimated Loss Given Default (LGD) and Exposure at Default (EAD) using borrower and loan features
-- Computed Expected Loss (EL = PD × LGD × EAD) and derived Risk Weighted Assets (RWA) and capital requirements (Basel III – 10.5%)
-- Performed portfolio optimization by removing high-risk loans, significantly improving capital-to-loss stability
-- Evaluated models using ROC-AUC, F1-score, and precision-recall trade-offs
-- **Tech:** Python, Pandas, NumPy, Scikit-learn, XGBoost, SciPy
+---
 
-  
-## Contact
-Kartikeya Singh 
-[LinkedIn](www.linkedin.com/in/kartikeyasingh10066)
-[Email](kartikeyasinghdec29@gmail.com)
+## I. The Council
 
+<img src="assets/02-the-council.png" width="850">
 
+Ten research personas, each carrying a distinct doctrine rather than a generic "trading bot" prompt:
 
+| # | Persona | Research Style |
+|---|---------|-----------------|
+| 1 | `physicist_stat_mech` | Statistical mechanics / information theory — rare-event detection, rolling Shannon entropy regime shifts |
+| 2 | `physicist_wave_dynamics` | Signal processing — Hilbert transform instantaneous phase & frequency, cycle-state detection |
+| 3 | `physicist_disordered_systems` | Regime-change detection — CUSUM change-point accumulation, continuous arctan scaling |
+| 4 | `mathematician_stochastic` | Ornstein-Uhlenbeck parameter estimation via rolling OLS — reversion speed, half-life sizing |
+| 5 | `mathematician_topology_geometry` | Differential geometry — Savitzky-Golay derivatives, true path curvature κ = y″/(1+y′²)^1.5 |
+| 6 | `quant_stat_arb` | Statistical arbitrage — synthetic fair-value spread, half-life-gated mean reversion |
+| 7 | `quant_vol_surface` | Garman-Klass OHLC volatility, regime-gated momentum/reversion switching |
+| 8 | `quant_ml_engineer` | Orthogonal feature ensemble — z-scored momentum + mean-reversion + volume-confidence |
+| 9 | `quant_behavioral` | Behavioral finance — disposition-effect proxy via distance-from-extremes |
+| 10 | `quant_macro_regime` | 2×2 Hurst-exponent × volatility-percentile quadrant allocator, including a "go flat" regime |
 
+**The pipeline, per persona, per run (2 runs × 10 personas = 20 attempts per session):**
+
+1. The persona is prompted for an **IDEA** (the market inefficiency being targeted), a **FORMULA** (the governing math, in plain notation), and **CODE** (a `signals(df, params=None)` function returning positions in `[-1, 1]`).
+2. Code is validated against a hard contract: no imports, no file/network access, no lookahead (`shift(-1)` is explicitly banned and checked for).
+3. Validated code is executed against real historical OHLCV data in a restricted sandbox (whitelisted builtins only, hard timeout).
+4. Successful strategies are backtested immediately and their metrics attached to the result.
+
+**Nothing is hidden.** Every attempt — including the ~60-70% that fail — streams live with its stated idea, its formula, its exact code, and its exact error. The idea and formula are stamped as comments directly into the code artifact, so a failed run is still legible on its own:
+
+```python
+# IDEA: Treat the log-price path as a curve; sharp curvature marks a turning point.
+# FORMULA: kappa = y'' / (1 + y'^2)^1.5, via Savitzky-Golay smoothed derivatives
+def signals(df, params=None):
+    ...
+```
+
+Typical failure modes surfaced by the graveyard (real examples from development): `pandas.Rolling` has no `.zscore()` method; `scipy.signal.hilbert` returns a raw `ndarray`, not a `Series`, so `.diff()` fails; `np.diff()` silently shortens arrays by one element causing length mismatches; models occasionally attempt `shift(-1)`, which is caught and rejected as a lookahead violation before it ever reaches a backtest.
+
+---
+
+## II. The Forge
+
+<img src="assets/03-the-forge.png" width="850">
+
+The backtesting laboratory. Every strategy — whether hand-written or council-generated — is held to the same contract:
+
+```python
+def signals(df, params=None) -> pd.Series
+# returns positions in {-1, 0, +1} aligned to df.index
+# +1 = long, -1 = short, 0 = flat
+# df columns available: Open, High, Low, Close, Volume
+```
+
+**Execution safety:**
+- Sandboxed exec environment — restricted builtins, banned tokens (`import`, `open(`, `exec`, `subprocess`, `socket`, `os.`, etc.), hard timeout
+- Strategy code is compiled and validated *before* it ever touches live data
+- Positions are shifted forward one bar before being applied to returns — no accidental lookahead in the backtest math itself
+
+**What gets computed:**
+- Total return, CAGR, Sharpe ratio, max drawdown, volatility, win rate, trade count
+- Full equity curve vs. buy-and-hold benchmark
+- Drawdown series
+- Complete trade log (entry/exit date, price, side, P&L %)
+- Configurable transaction costs (bps), leverage (1–10×), stop-loss, and take-profit
+
+Strategies can be run at 1mo–max lookback windows across 5m/15m/1h/1d bars, on any Yahoo Finance-listed instrument.
+
+---
+
+## III. The Treasury
+
+<img src="assets/04-the-treasury.png" width="850">
+
+Portfolio construction and the system's actual thesis: **strategies shouldn't just trade one instrument — they should be tested against a real, allocated portfolio.**
+
+**Three operations:**
+
+1. **Analyze** — given a set of holdings and weights, compute portfolio-level return, volatility, Sharpe, drawdown, and a full pairwise correlation matrix.
+2. **Optimize** — rebalance the same holdings using either:
+   - **Mean-Variance Optimization (MVO)** — maximizes Sharpe ratio via constrained SLSQP over the covariance matrix
+   - **Hierarchical Risk Parity (HRP)** — clusters assets by correlation distance (single-linkage) and allocates inverse-variance weight recursively down the dendrogram, avoiding the instability MVO exhibits under estimation error
+3. **Fusion** — the connective operation. A strategy pulled from the Council's vault is run not against a single stock, but against the **portfolio's own weighted combined equity curve**, treated as a synthetic instrument. This answers a different question than a single-asset backtest: *does this strategy add value on top of my actual diversified book, net of costs?*
+
+---
+
+## Design Philosophy
+
+<img src="assets/01-introduction.png" width="850">
+
+> "The apparatus is technical, but the discipline is old. Nothing that happens here has not happened before — the markets, like galleries, are principally a museum of what has already been done."
+
+The interface deliberately avoids dashboard-style UI in favor of a single-column, editorial document — the system is read like a research notebook, chapter by chapter (Council → Forge → Treasury), rather than clicked through like a SaaS product. Every session is a document: idea, formula, code, result, in that order, for every attempt, success or failure.
+
+---
+
+## Engineering notes
+
+- **Fully local.** LLM inference runs on-device via Ollama (Qwen3-8B) — no API costs, no data leaves the machine, no rate limits on strategy generation.
+- **Failure is a first-class citizen.** The graveyard isn't a debug log bolted on after the fact — the event schema (`stage`, `persona_start`, `code`, `validation_failed`, `runtime_error`, `backtested`, `done`) treats success and failure as equally structured, equally displayed outcomes.
+- **No lookahead, enforced twice.** Once at the persona-prompt level (explicit instruction + static check for `shift(-1)`), and again structurally in the backtest engine itself (signals are shifted forward before being applied to returns), so a strategy can't accidentally cheat even if a check is bypassed.
+- **Sandboxing over trust.** Generated code runs with a whitelisted builtin set and a banned-token filter rather than relying on the model to behave — the code being untrusted output is treated as the default assumption, not an edge case.
+
+---
+
+## Status
+
+Personal research tool, actively developed. Paper trading only — not investment advice, not a production trading system.
